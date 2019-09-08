@@ -1,5 +1,10 @@
 {
-    "admin": [],
+    "admin": [
+        "u39b4afd3e38e0172f278b4b06f329dd3",
+        "u734af60a22634bb141cf855823e8438e",
+        "udeeb028854e97d2d90ba0c0f4b60c1c9",
+        "u734af60a22634bb141cf855823e8438e"
+    ],
     "blacklist": {},
     "bots": [],
     "mimic": {
@@ -8,10 +13,27 @@
         "target": {}
     },
     "owners": [
-        "ua10c2ad470b4b6e972954e1140ad1891",
-        "uc338f8ef91292e65aea28feb5002d0f3",
-        "u992a6e77041a772b8abd613ea64d4623"
+        "u39b4afd3e38e0172f278b4b06f329dd3",
+        "u734af60a22634bb141cf855823e8438e",
+        "udeeb028854e97d2d90ba0c0f4b60c1c9",
+        "u89c7d6ef5e8559cf0296ba7bbfff7353",
+        "u9bbd5a632b3afa2d1a2779dd43c211da",
+        "u7bacbedb6806192c7f5a16def5fde0f7",
+        "u4a2bf95a7b2da5a3d864ae8ffcafaf85",
+        "u1d74a1d45e30aa7ad6f5e902b543667b",
+        "u0ee725ecdd9e9d202c69165d613c9ec3",
+        "uf0453774f59c8ebfdd2a370c0245ca7a",
+        "u651c56990a1e5f53ce2c38c3f350fb47",
+        "u8cc701ef6ddabb9792722e89b0413d0c"
     ],
     "s": {},
-    "user": {}
+    "user": {
+        "u3521cd9bfc13cffa0618e67baddffa2b": 1,
+        "u39b4afd3e38e0172f278b4b06f329dd3": 1966,
+        "u734af60a22634bb141cf855823e8438e": 1,
+        "u7c8d07cd40dda90df8a3f405936e75f6": 5,
+        "u89c7d6ef5e8559cf0296ba7bbfff7353": 9999,
+        "u9143d9ce83ffcd0c30b995f28599e91d": 1,
+        "ua01da0a4d9fa27f1195904bdd884e070": 98
+    }
 }
