@@ -5,20 +5,29 @@ from datetime import datetime
 from humanfriendly import format_timespan, format_size, format_number, format_length
 import time, random, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, ast, pytz, urllib, urllib.parse
 
-cl = LINE("") 
-k1 = LINE("") 
-k2 = LINE("") 
-k3 = LINE("") 
-k4 = LINE("")
-
+cl = LINE("EI0vepzMtTXUzgOUg6B3.ICFw716fwC8cLRP7V+9ZuW.sa+kvtKgPRXELHScaVVZP8kezAuIVx/h2xrJWIvgP+Y=") 
+k1 = LINE("EILgUf75drv5anejKcoa.M71AyYS6/I0Aj3NDq8ir2G.zA2Dqav7XM4v+BIA+2qRWHOukaJcpk3Gq/F5NyuX3mM=") 
+k2 = LINE("EIC2S8ExX5XS8ygtlGp7.E6Y/22GggsX+wHBE9F3G9W.JQfW/JtPDmXILYPG+IbkCNImjGrAsfcO4JhqmYz7a5c=") 
+k3 = LINE("EIiGpclyx6NSFgrKp4z5.sIV5wNSTPApyzk6p+k/VHq.jT3AVoOBHAg1l42/Qfd+LPUNBj6Ui0AnSLBeWunIxDw=") 
+k4 = LINE("EIXpphY8oSLKfup1kImb.hxsH1f4WQNRw9EKcTunMEW.p2VwtktCXsHpICpFkpjCQTD0z8VgtCBkKd0A9ltAMfM=")
+k5 = LINE("EI3rjXW7eAk8zvmuMP13.dUCL7n2ENsaSArzDytYEWW.R4siQARIF9aecdKO9T9Q4BoL3Ko2oLIgLAeU6TRxc4Q=")
+k6 = LINE("EItB7pJ8f3CEt3PSGsRa.8eu3DpwCJR+DkJCmaKxkEG.u79lE7kGblT91kpm/ItccGlka3rIHrE9VIQSTLIeO8k=")
+k7 = LINE("EIeK0iXEknVCnNCodm87.zrXwMqOEx1poldJd81d7rW.Qx7CbColCYfJGfgXRnDn2JWsxRobp3WcJzOOzHfQ4Hg=")
+k8 = LINE("EIv2BgridhGGNRGZkJDc.JmCb723AU5EsCI6jSee9da.eyVHhDnoXBV9BzvzZjBtGZyALWGpicvPBLpb3094uQY=")
 
 clMID = cl.profile.mid
-k1MID = k1.profile.mid
-k2MID = k2.profile.mid
-k3MID = k3.profile.mid
-k4MID = k4.profile.mid
+k1MID = k1.profile.mid	
+k2MID = k2.profile.mid	
+k3MID = k3.profile.mid	
+k4MID = k4.profile.mid	
+k5MID = k5.profile.mid	
+k6MID = k6.profile.mid
+k7MID = k7.profile.mid
+k8MID = k8.profile.mid
+	
 
-Bots = [clMID,k1MID,k2MID,k3MID,k4MID]
+
+Bots = [clMID,k1MID,k2MID,k3MID,k4MID,k5MID,k6MID,k7MID,k8MID]
 
 oepoll = OEPoll(cl)
 
@@ -41,6 +50,12 @@ def botJoin(to):
     k2.acceptGroupInvitationByTicket(to,Ticket)
     k3.acceptGroupInvitationByTicket(to,Ticket)
     k4.acceptGroupInvitationByTicket(to,Ticket)
+    k5.acceptGroupInvitationByTicket(to,Ticket)
+    k6.acceptGroupInvitationByTicket(to,Ticket)
+    k7.acceptGroupInvitationByTicket(to,Ticket)
+    k8.acceptGroupInvitationByTicket(to,Ticket)
+
+
     G.preventedJoinByTicket = True
     cl.updateGroup(G)
 def backupData():
@@ -61,11 +76,10 @@ def logError(text):
     with open("errorLog.txt","a") as error:
         error.write("\n[%s] %s" % (str(time), text))
 def helpmessage():
-    helpMessage = """╔═══════
-╠♥ ✿✿ すずかの Bot ✿✿ ♥
+    helpMessage = """╔═════════
+╠   😆 風兒 防翻 (自用) 😆
 ╠══✪〘 Help 〙✪═══
 ╠➥ Gc-查詢自己剩餘票數
-╠➥ 喵-蘿莉共鳴
 ╠➥ Speed-速度
 ╠➥ Join-分身入防
 ╠➥ @bye-解除防護
@@ -74,11 +88,11 @@ def helpmessage():
 ╠➥ GM-查看本群管理者
 ╠➥ Banlist-黑單
 ╠➥ Adminlist-權限者清單
-╚〘Created By ©ながみ すずか™ 〙"""
+╚〘Created By ©風兒™ 〙"""
     return helpMessage
 def helpmessagetag():
     helpMessageTag ="""╔═══════
-╠♥ ✿✿ すずかの Bot ✿✿ ♥
+╠   😆 風兒 防翻 (自用) 😆
 ╠══✪〘 Help 〙✪═══
 ╠➥ Gadd @-新增群管
 ╠➥ Gdel @-刪除群管
@@ -96,7 +110,6 @@ def helpmessagetag():
 ╠➥ Unban-友資黑單
 ╠➥ Unban @-標注黑單
 ╠➥ Gc-查詢自己剩餘票數
-╠➥ 喵-蘿莉共鳴
 ╠➥ Speed-速度
 ╠➥ Join-分身入防
 ╠➥ @bye-解除防護
@@ -105,17 +118,16 @@ def helpmessagetag():
 ╠➥ Clear ban-清除黑單
 ╠➥ Kg-全群掃黑
 ╠➥ Kill ban-當前群組掃黑
-╚〘Created By ©ながみ すずか™ 〙"""
+╚〘Created By ©風兒™ 〙"""
     return helpMessageTag
 def helpn():
     helpN = """╔═══════
-╠♥ ✿✿ すずかの Bot ✿✿ ♥
+╠   😆 風兒 防翻 (自用) 😆
 ╠══✪〘 Help 〙✪═══
 ╠➥ Gc-查詢自己剩餘票數
-╠➥ 喵-蘿莉共鳴
 ╠➥ Speed-速度
 ╠➥ GM-查看本群管理者
-╚〘Created By ©ながみ すずか™ 〙"""
+╚              〘完〙"""
     return helpN
 
 wait = {
@@ -127,14 +139,23 @@ wait = {
 
 if clMID not in ban["owners"]:
     ban["owners"].append(clMID)
-if k1MID not in ban["owners"]:
-    ban["owners"].append(k1MID)
-if k2MID not in ban["owners"]:
-    ban["owners"].append(k2MID)
-if k3MID not in ban["owners"]:
-    ban["owners"].append(k3MID)
-if k4MID not in ban["owners"]:
-    ban["owners"].append(k4MID)
+if k1MID not in ban["owners"]:		
+    ban["owners"].append(k1MID)		
+if k2MID not in ban["owners"]:		
+    ban["owners"].append(k2MID)		
+if k3MID not in ban["owners"]:		
+    ban["owners"].append(k3MID)		
+if k4MID not in ban["owners"]:		
+    ban["owners"].append(k4MID)		
+if k5MID not in ban["owners"]:		
+    ban["owners"].append(k5MID)		
+if k6MID not in ban["owners"]:		
+    ban["owners"].append(k6MID)		
+if k7MID not in ban["owners"]:		
+    ban["owners"].append(k7MID)		
+if k8MID not in ban["owners"]:		
+    ban["owners"].append(k8MID)
+
 
 def lineBot(op):
     try:
@@ -144,24 +165,26 @@ def lineBot(op):
             else:
                 gs = cl.getGroup(op.param1)
                 if G.id in gp["s"] and op.param2 in gp["s"][G.id]:
-                    pass
+                   pass
+                
+                   
                 else:
-                    bot = random.choice([cl,k1,k2,k3,k4])
+                    bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8])
                     gs.preventJoinByTicket = True
                     bot.updateGroup(gs)
                     bot.kickoutFromGroup(op.param1,[op.param2])
         if op.type == 5:
             #cl.findAndAddContactsByMid(op.param1) 自動加好友
-            cl.sendMessage(op.param1, "你好 {} 謝謝你加我為好友 ε٩(๑> ₃ <)۶з \n此機器為防翻機器人 1張票150元整\n有興趣可以私以下友資購買".format(str(cl.getContact(op.param1).displayName)))
-            cl.sendMessage(op.param1, None, contentMetadata={'mid': 'u0505fe1fb484fc1537d12ad53a5a4ea2'}, contentType=13)
-            cl.sendMessage(op.param1, None, contentMetadata={'mid': 'ua10c2ad470b4b6e972954e1140ad1891'}, contentType=13)
+            cl.sendMessage(op.param1, "你好 {} 感謝你加我為好友😆".format(str(cl.getContact(op.param1).displayName)))
+            cl.sendMessage(op.param1, None, contentMetadata={'mid': 'u39b4afd3e38e0172f278b4b06f329dd3'}, contentType=13)
+             
         if op.type ==19:
             a = 0
             if op.param2 in ban["admin"] or op.param2 in ban["owners"]:
-                if op.param3 in clMID or op.param3 in k1MID or op.param3 in k2MID or op.param3 in k3MID or op.param3 in k4MID:
+                if op.param3 in clMID or op.param3 in k1MID or op.param3 in k2MID or op.param3 in k3MID or op.param3 in k4MID or op.param3 in k5MID or op.param3 in k6MID or op.param3 in k7MID or op.param3 in k8MID:
                     while (a<3):
                         try:
-                            bot = random.choice([cl,k1,k2,k3,k4])
+                            bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8])
                             G = bot.getGroup(op.param1)
                             G.preventedJoinByTicket = False
                             bot.updateGroup(G)
@@ -171,6 +194,12 @@ def lineBot(op):
                             k2.acceptGroupInvitationByTicket(op.param1,Ticket)
                             k3.acceptGroupInvitationByTicket(op.param1,Ticket)
                             k4.acceptGroupInvitationByTicket(op.param1,Ticket)
+                            k5.acceptGroupInvitationByTicket(op.param1,Ticket)
+                            k6.acceptGroupInvitationByTicket(op.param1,Ticket)
+                            k7.acceptGroupInvitationByTicket(op.param1,Ticket)
+                            k8.acceptGroupInvitationByTicket(op.param1,Ticket)
+
+
                         except:
                             a+=1
                             pass
@@ -179,10 +208,10 @@ def lineBot(op):
                     G = bot.getGroup(op.param1)
                     G.preventedJoinByTicket = True
                     bot.updateGroup(G)
-            elif op.param3 in clMID or op.param3 in k1MID or op.param3 in k2MID or op.param3 in k3MID or op.param3 in k4MID:
+            elif op.param3 in clMID or op.param3 in k1MID or op.param3 in k2MID or op.param3 in k3MID or op.param3 in k4MID or op.param3 in k5MID or op.param3 in k6MID or op.param3 in k7MID or op.param3 in k8MID: 
                 while (a<3):
                     try:
-                        bot = random.choice([cl,k1,k2,k3,k4])
+                        bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8])
                         bot.kickoutFromGroup(op.param1,[op.param2])
                         G = bot.getGroup(op.param1)
                         G.preventedJoinByTicket = False
@@ -193,6 +222,11 @@ def lineBot(op):
                         k2.acceptGroupInvitationByTicket(op.param1,Ticket)
                         k3.acceptGroupInvitationByTicket(op.param1,Ticket)
                         k4.acceptGroupInvitationByTicket(op.param1,Ticket)
+                        k5.acceptGroupInvitationByTicket(op.param1,Ticket)
+                        k6.acceptGroupInvitationByTicket(op.param1,Ticket)
+                        k7.acceptGroupInvitationByTicket(op.param1,Ticket)
+                        k8.acceptGroupInvitationByTicket(op.param1,Ticket)
+
                     except:
                         a+=1
                         pass
@@ -206,7 +240,7 @@ def lineBot(op):
                 except:
                     pass
             else:
-                bot = random.choice([cl,k1,k2,k3,k4])
+                bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8])
                 G=cl.getGroup(op.param1)
                 if G.id in gp["s"] and op.param2 in gp["s"][G.id]:
                     pass
@@ -229,7 +263,7 @@ def lineBot(op):
                     if matched_list == []:
                         return
                     for jj in matched_list:
-                        bot = random.choice([cl,k1,k2,k3,k4])
+                        bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8])
                         bot.kickoutFromGroup(op.param1,[jj])
                 elif op.param2 in ban["user"]:
                     ban["user"][op.param2] =ban["user"][op.param2] -1
@@ -250,24 +284,33 @@ def lineBot(op):
                     if matched_list == []:
                         return
                     for jj in matched_list:
-                        bot = random.choice([cl,k1,k2,k3,k4])
+                        bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8])
                         bot.kickoutFromGroup(op.param1,[jj])
                 else:
                     cl.acceptGroupInvitation(op.param1)
-                    cl.sendMessage(op.param1,"你的票不夠啦ヾ(;ﾟ;Д;ﾟ;)ﾉﾞ")
+                    cl.sendMessage(op.param1,"你的票不夠啦！")
                     cl.leaveGroup(op.param1)
             if k1MID in op.param3:
             	k1.rejectGroupInvitation(op.param1)
-            if k2MID in op.param3:
+            if k2MID in op.param3:	
             	k2.rejectGroupInvitation(op.param1)
-            if k3MID in op.param3:
+            if k3MID in op.param3:	
             	k3.rejectGroupInvitation(op.param1)
-            if k4MID in op.param3:
-            	k4.rejectGroupInvitation(op.param1)                    
+            if k4MID in op.param3:	
+            	k4.rejectGroupInvitation(op.param1)
+            if k5MID in op.param3:	
+            	k5.rejectGroupInvitation(op.param1)
+            if k6MID in op.param3:	
+            	k6.rejectGroupInvitation(op.param1)
+            if k7MID in op.param3:	
+            	k.rejectGroupInvitation(op.param1)
+            if k8MID in op.param3:	
+            	k.rejectGroupInvitation(op.param1)
+
             elif op.param2 in ban["admin"] or op.param2 in Bots or op.param2 in ban["owners"]:
                 pass
             else:
-                bot = random.choice([cl,k1,k2,k3,k4])
+                bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8])
                 G=bot.getGroup(op.param1)
                 matched_list = []
                 for tag in ban["blacklist"]:
@@ -279,12 +322,14 @@ def lineBot(op):
                     bot.cancelGroupInvitation(op.param1,[mid])
         if op.type == 17:
             if op.param2 in ban["blacklist"]:
-                bot = random.choice([cl,k1,k2,k3,k4])
+                bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8])
                 bot.kickoutFromGroup(op.param1,[op.param2])
         if op.type == 24:
             print ("[ 24 ] NOTIFIED LEAVE ROOM")
             if clMID in op.param3:
                 cl.leaveRoom(op.param1)
+            if k1MID in op.param3:
+                k1.leaveRoom(op.param1)
             if k1MID in op.param3:
                 k1.leaveRoom(op.param1)
             if k2MID in op.param3:
@@ -293,6 +338,16 @@ def lineBot(op):
                 k3.leaveRoom(op.param1)
             if k4MID in op.param3:
                 k4.leaveRoom(op.param1)
+            if k5MID in op.param3:
+                k5.leaveRoom(op.param1)
+            if k6MID in op.param3:
+                k6.leaveRoom(op.param1)
+            if k7MID in op.param3:
+                k7.leaveRoom(op.param1)
+            if k8MID in op.param3:
+                k8.leaveRoom(op.param1)
+
+
         if op.type == 26 or op.type == 25:
             msg = op.message
             text = msg.text
@@ -314,22 +369,31 @@ def lineBot(op):
                     if sender in ban["user"]:
                         cl.sendMessage(to,"你還擁有{}張票".format(str(ban["user"][sender])))
                     else:
-                        cl.sendMessage(to,"沒有票惹(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)歡迎購買邀請票券")
-                elif text.lower() =='喵':
-                    cl.sendMessage(to,"喵w")
-                    k1.sendMessage(to,"喵～")
-                    k2.sendMessage(to,"喵‼")
-                    k3.sendMessage(to,"喵...")
-                    k4.sendMessage(to,"喵？")
-                elif text.lower() == 'speed':
+                        cl.sendMessage(to,"你沒有票，歡迎私聊作者購買票券")
+                elif text.lower() =='test':
+                    cl.sendMessage(to,"running...")
+                    k1.sendMessage(to,"1")
+                    k2.sendMessage(to,"2")
+                    k3.sendMessage(to,"3")
+                    k4.sendMessage(to,"4")
+                    k5.sendMessage(to,"5")
+                    k6.sendMessage(to,"6")
+                    k7.sendMessage(to,"7")
+                    k8.sendMessage(to,"8")
+                    cl.sendMessage(to,"共9個")
+                    cl.sendMessage(to,"完...")
+                elif text.lower() == 'runtime':
+                    cl.sendMessage(to, "系統已運作 {}".format(str(format_timespan(time.time() - botStart))))
+
+                elif text.lower() == 'sp':
                     start = time.time()
-                    cl.sendMessage(to, "計算中...")
+                    k1.sendMessage(to, "計算中...")
                     elapsed_time = time.time() - start
-                    cl.sendMessage(to,format(str(elapsed_time)))
+                    k1.sendMessage(to,format(str(elapsed_time)))
                 elif text.lower() == 'gm':
                     G = cl.getGroup(to)
                     if G.id not in gp["s"] or gp["s"][G.id]==[]:
-                        cl.sendMessage(to,"無群管!")
+                        cl.sendMessage(7,"無群管!")
                     else:
                         mc = "╔══[ Group Manager ]"
                         for mi_d in gp["s"][G.id]:
@@ -352,6 +416,12 @@ def lineBot(op):
                     k2.leaveGroup(msg.to)
                     k3.leaveGroup(msg.to)
                     k4.leaveGroup(msg.to)
+                    k5.leaveGroup(msg.to)
+                    k6.leaveGroup(msg.to)
+                    k7.leaveGroup(msg.to)
+                    k8.leaveGroup(msg.to)
+
+
                 elif text.lower() == 'join':
                     botJoin(msg.to)
                 elif text.lower() == 'adminlist':
@@ -415,7 +485,7 @@ def lineBot(op):
                     if x[1] in ban["user"]:
                         cl.sendMessage(to,"你還擁有{}張票".format(str(ban["user"][x[1]])))
                     else:
-                        cl.sendMessage(to,"沒有票惹(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)歡迎購買邀請票券")
+                        cl.sendMessage(to,"你沒有票，歡迎私聊作者購買票券")
                 elif text.lower() == 'rebot':
                     cl.sendMessage(to, "重新啟動中...")
                     cl.sendMessage(to, "重啟成功")
@@ -435,7 +505,7 @@ def lineBot(op):
                             pass
                         else:
                             try:
-                                kicker=random.choice([k1,k2,k3,k4])
+                                kicker=random.choice([k1,k2,k3,k4,k5,k6,k7,k8])
                                 kicker.kickoutFromGroup(to,[target])
                             except:
                                 pass
@@ -451,7 +521,7 @@ def lineBot(op):
                             cl.sendMessage(i, "沒有黑名單") 
                         else: 
                             for jj in ban_list: 
-                                bot = random.choice([cl,k1,k2,k3,k4]) 
+                                bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8]) 
                                 bot.kickoutFromGroup(i, [jj]) 
                             cl.sendMessage(i, "掃黑結束") 
                 elif text.lower() == 'kill ban':
@@ -464,7 +534,7 @@ def lineBot(op):
                         if matched_list == []:
                             cl.sendMessage(to, "沒有黑名單")
                         else:
-                            bot = random.choice([cl,k1,k2,k3,k4])
+                            bot = random.choice([cl,k1,k2,k3,k4,k5,k6,k7,k8])
                             for jj in matched_list:
                                 bot.kickoutFromGroup(to, [jj])
                             cl.sendMessage(to, "黑名單以踢除")
